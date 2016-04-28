@@ -46,7 +46,7 @@ Function Find-SMBShare
 
         [parameter(Mandatory=$False,
                     ValueFromPipeLine=$False,
-                    ValueFromPipelineByPropertyName=$True,
+                    ValueFromPipelineByPropertyName=$False,
                     HelpMessage="Admin. Username. Or. PSCredential")]
         [Alias('user','username','pscredential')]
         [object]$Credential      
