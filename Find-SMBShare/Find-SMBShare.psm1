@@ -42,7 +42,7 @@ Function Find-SMBShare
                    ValueFromPipelineByPropertyName=$True,
                    HelpMessage="The. Computer. Name.")]
         [Alias('Hostname','cn')]
-        [string[]]$ComputerName,
+        [object[]]$ComputerName,
 
         [parameter(Mandatory=$False,
                     ValueFromPipeLine=$False,
