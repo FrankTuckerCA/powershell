@@ -106,4 +106,11 @@
     #Enter value as ["Nothing", "Start", "StartIfRunning"]
     $VMAutostart = "Nothing"
     Set-vm -VMName $VMParms.name -AutomaticStartAction $VMAutostart
-     
+
+
+#Cool Server2016, Win10 Stuff configure VM form Host 
+     #Enter-PSSession -VMName vmname 
+     #Invoke-Command -VMId vmname -ScriptBlock { }
+
+#don't foget |pipe| 
+#    Get-vm -name lab* | Get-VMnetworkAdapter | Connect-VMNetworkAdapter -Switchname 'private'
