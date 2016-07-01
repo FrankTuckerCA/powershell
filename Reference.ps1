@@ -138,3 +138,22 @@ Search-ADAccount -AccountDisabled -PasswordNeverExpires -AccountInactive -TimeSp
     #7 AFTER you setup MDT
         #Location of MDT Boot.wim Default \\mdt\deploy\boot\LiteTouchPE_x64.wim
         Import-WDSBootImage 
+
+#Robo Copy
+	robocopy \\Netbios\Share\Data  d:\backup\Netbios\Data_backup_folder  /mir /mt /log:d:\backup\Netbios\Netbios_data_backup_log.txt
+
+	* /e	= copy all sub-directories, even empty
+	* /s	= copy all sub-directories, but not empty
+	* /purge = delete dest files/dirs that no longer exist in source
+	* /mir  = mirror (check, copy only new files, delete dest file if source missing)
+		* /mir = /e /purge
+	* /np   = no progress counter
+	* /log: = create log file
+	* /w:   = wait time in secs (if file in-use) (30 sec default w/o entering switch)
+	* /mt:	= mulit-threaded (8 threads default if entered switch)
+	* /z:   = retry if network connection is lost
+	* /move  = MOVE files and Directorys
+	* /mov = MOVe files (delete source)
+	* /mon:n = MONitor source; run again when more than n changes seen
+	* /mot:m = MoniTor source; run again when in m minutes time, if changed
+	* /rh:hhmm-hhmm = Run Hours; times when new copies may be started
