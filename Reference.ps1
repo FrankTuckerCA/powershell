@@ -43,6 +43,16 @@ Search-ADAccount -AccountDisabled -PasswordNeverExpires -AccountInactive -TimeSp
         }
     New-VM @VMParms                    
 
+#Schedule PowerShell Script
+	$ScriptPath = 'C:\scripts\ping-report-v3.ps1'
+	$TaskName   = 'PingReport'
+	$TaskRun    = "powershell.exe -NoLogo -NonInteractive -WindowStyle Hidden -Command ""$ScriptPath""" 
+
+# Example: Hourly starting at 9 AM
+SCHTASKS.EXE /Create /S $Env:COMPUTERNAME /RU SYSTEM /TN $TaskName /TR $TaskRun /SC HOURLY /ST 09:00 /RL HIGHEST /F 
+
+
+
 #Export Drivers 
     Export-WindowsDriver -Path "\\server\temp\lap1_drvexport"
     Dism /Online /Export-Driver /Destination:D:\path
