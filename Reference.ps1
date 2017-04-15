@@ -52,6 +52,8 @@ Search-ADAccount -AccountDisabled -PasswordNeverExpires -AccountInactive -TimeSp
 SCHTASKS.EXE /Create /S $Env:COMPUTERNAME /RU SYSTEM /TN $TaskName /TR $TaskRun /SC HOURLY /ST 09:00 /RL HIGHEST /F 
 
 $d = (get-date)  $d.adddays(-7)  $d.addyears(1)  $d.addmonths(6)
+"{0:yyyyMMdd}" -f (get-date).AddDays(-1)
+(get-date).AddDays(-1).ToString("yyyMMdd")
 
 #Export Drivers 
     Export-WindowsDriver -Path "\\server\temp\lap1_drvexport"
