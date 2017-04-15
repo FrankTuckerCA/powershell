@@ -51,7 +51,7 @@ Search-ADAccount -AccountDisabled -PasswordNeverExpires -AccountInactive -TimeSp
 # Example: Hourly starting at 9 AM
 SCHTASKS.EXE /Create /S $Env:COMPUTERNAME /RU SYSTEM /TN $TaskName /TR $TaskRun /SC HOURLY /ST 09:00 /RL HIGHEST /F 
 
-
+$d = (get-date)  $d.adddays(-7)  $d.addyears(1)  $d.addmonths(6)
 
 #Export Drivers 
     Export-WindowsDriver -Path "\\server\temp\lap1_drvexport"
