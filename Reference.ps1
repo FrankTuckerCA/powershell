@@ -1,6 +1,12 @@
 ﻿#PowerShell Reference
 #FrankTucker@lan-sol.com
 
+#Invoke-Webrequest  Downloading all Drivers  Requires you to create folders ..not prefected
+	$dell = ( (iwr -Uri http://downloads.dell.com/published/pages/optiplex-740.html#drivers).links.href)
+	Foreach ($href in $dell){
+	iwr ("http://downloads.dell.com$href") -outfile "c:\users\frank\test\$href"
+	}
+
 #Network Troubleshooting, replaces: ping, telnet port check, tracert
 Test-NetConnection hostname -TraceRoute -Port 25 
 
